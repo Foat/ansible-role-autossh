@@ -3,6 +3,15 @@
   apt:
     name: autossh
     state: present
+  when:
+  - ansible_pkg_mgr == "apt"
+
+- name: "{{ autossh_task_prefix }} Install autossh"
+  dnf:
+    name: autossh
+    state: present
+  when:
+  - ansible_pkg_mgr == "dnf"
 
 - name: "{{ autossh_task_prefix }} Create configuration directory"
   file:
