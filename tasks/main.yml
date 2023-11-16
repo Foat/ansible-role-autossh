@@ -1,17 +1,8 @@
 ---
 - name: "{{ autossh_task_prefix }} Install autossh"
-  apt:
+  package:
     name: autossh
     state: present
-  when:
-  - ansible_pkg_mgr == "apt"
-
-- name: "{{ autossh_task_prefix }} Install autossh"
-  dnf:
-    name: autossh
-    state: present
-  when:
-  - ansible_pkg_mgr == "dnf"
 
 - name: "{{ autossh_task_prefix }} Create configuration directory"
   file:
@@ -36,5 +27,6 @@
     daemon_reload: "{{ item.systemd_reload | default('yes') }}"
     enabled: "{{ item.systemd_enabled | default('no') }}"
     masked: "{{ item.systemd_masked | default('no') }}"
+    scope: "user"
   loop: "{{ autossh_profiles }}"  
 ...

@@ -5,7 +5,7 @@ autossh_user: root
 
 # Path settings
 autossh_path_config: "/etc/autossh"
-autossh_path_systemd: "/etc/systemd/system/autossh@.service"
+autossh_path_systemd: "~/.config/systemd/user/autossh@.service"
 autossh_template_config: "autossh.conf.j2"
 autossh_template_systemd: "autossh.systemd.j2"
 
